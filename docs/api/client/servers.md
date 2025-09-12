@@ -910,7 +910,11 @@ const response = await axios.get(\`https://your-panel.com/api/client/servers/\${
 const { token, socket } = response.data.data;
 
 // Connect to WebSocket
-const ws = new WebSocket(socket);
+const ws = new WebSocket(socket, {
+  headers: {
+    "Origin": "https://your-panel.com"
+  }
+});
 
 ws.on('open', () => {
   // Authenticate
