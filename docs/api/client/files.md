@@ -407,12 +407,17 @@ This approach ensures secure file uploads without exposing server credentials an
 
 Use the signed URL from Step 1 to upload your file(s).
 
+#### Query Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `directory` | string | No | Target directory (must match Step 1) |
+
 #### Form Data Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `files` | file | Yes | File to upload (use `files` as field name) |
-| `directory` | string | Yes | Target directory (must match Step 1) |
 
 ### Complete Example
 
@@ -428,9 +433,8 @@ signed_url=$(curl -s \\
   | jq -r '.attributes.url')
 
 # Step 2: Upload file to signed URL
-curl -X POST "$signed_url" \\
-  -F "files=@/path/to/local/file.txt" \\
-  -F "directory=/"`,
+curl -X POST "$signed_url?directory=%2F" \\
+  -F "files=@/path/to/local/file.txt"`,
     javascript: `const axios = require('axios');
 const FormData = require('form-data');
 const fs = require('fs');
