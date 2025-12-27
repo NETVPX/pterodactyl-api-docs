@@ -41,6 +41,28 @@ When you exceed the rate limit, you'll receive a `429 Too Many Requests` respons
 }
 ```
 
+## Increasing the Rate Limit
+
+You can configure the API rate limits on your Pterodactyl panel instance by editing the `.env` file. By default, these settings are not present, so you'll need to add them manually.
+
+The `.env` file is typically located at:
+
+```
+/var/www/pterodactyl/.env
+```
+
+Add or update the following lines to set your desired rate limits (values shown are defaults):
+
+```env
+APP_API_APPLICATION_RATELIMIT=240
+APP_API_CLIENT_RATELIMIT=240
+```
+
+- `APP_API_APPLICATION_RATELIMIT`: Sets the rate limit for the Application API (requests per minute per API key).
+- `APP_API_CLIENT_RATELIMIT`: Sets the rate limit for the Client API (requests per minute per API key).
+
+After making changes, restart your Pterodactyl panel for the new settings to take effect.
+
 ## Best Practices
 
 ### 1. Check Rate Limit Headers

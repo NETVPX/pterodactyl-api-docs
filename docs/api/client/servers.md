@@ -1187,7 +1187,7 @@ curl -X POST "https://your-panel.com/api/client/servers/d3aac109/settings/reinst
 Returns empty response body with status code 202.
 
 :::warning Important
-Reinstalling a server will **permanently delete all files** and reinstall the server from scratch. Make sure to create backups before reinstalling.
+Reinstalling a server will just **rerun the install script** with all files still on the server. There is also no endpoint to delete all files.
 :::
 
 ### Update Docker Image
@@ -2006,7 +2006,7 @@ Trigger a reinstallation of the server. This will stop the server and re-run the
 **`POST /api/client/servers/{server}/settings/reinstall`**
 
 :::warning Important
-This action will delete all server files and reinstall the server from scratch. Make sure to backup important data before proceeding.
+Reinstalling a server will just **rerun the install script** with all files still on the server. There is also no endpoint to delete all files.
 :::
 
 ### URL Parameters
